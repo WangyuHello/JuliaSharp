@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+   <ItemGroup>
+        <Content Include="$(MSBuildThisFileDirectory)\native\libjulia.dll">
+            <Link>julia\win-x64\libjulia.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>false</Pack>
+        </Content>
+        <Content Include="$(MSBuildThisFileDirectory)\native\libjulia.so">
+            <Link>julia\linux-x64\libjulia.so</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>false</Pack>
+        </Content>
+        <Content Include="$(MSBuildThisFileDirectory)\native\sys.dll">
+            <Link>julia\lib\julia\sys.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>false</Pack>
+        </Content>
+        <Content Include="$(MSBuildThisFileDirectory)\native\sys.so">
+            <Link>julia\lib\julia\sys.so</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>false</Pack>
+        </Content>
+    </ItemGroup>
+
+   <ItemGroup>
+     <PackageReference Include="System.Memory" Version="4.5.1" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <Folder Include="Interop\" />
+   </ItemGroup>
+
+</Project>
